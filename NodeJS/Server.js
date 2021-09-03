@@ -11,13 +11,12 @@ app.use(cors())
 
 const db = config.get('db.url');
 
-mongoose.connect(db,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(()=>console.log("Mongo Connected!!!!"))
-.catch((err)=>console.log(err))
-
+// mongoose.connect(db,{
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// })
+// .then(()=>console.log("Mongo Connected!!!!"))
+// .catch((err)=>console.log(err))
 app.use('/app/products', products)
 
 const port = 5000

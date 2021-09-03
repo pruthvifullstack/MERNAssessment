@@ -2,27 +2,42 @@
 const express = require('express')
 const router = express.Router()
 
-const Product = require('../Models/ProductModel')
+// const Products = require('../DataFile/ProductList')
+
+const Products = [{
+    id:1,
+    title:"Prod1",
+    description:"Prod1 Description"
+},
+{
+    id:2,
+    title:"Prod2",
+    description:"Prod2 Description"
+},
+{
+    id:3,
+    title:"Prod3",
+    description:"Prod3 Description"
+},
+{
+    id:4,
+    title:"Prod4",
+    description:"Prod4 Description"
+}
+]
+
 
 //GET method - retrives all data
 router.get("/",(req,res)=>{
-    try{
-        Product.find()
-        .then((products)=>res.json(products))
-    }catch(err){
-        res.status(500).json({error:err.message})
-    }
-})
+    res.json({Products:Products})
+    })
+
 
 //GET method - retrieves only one item
-router.get("/:id",(req,res)=>{
-    try{
-        Product.findById(req.params.id)
-    .then((product) => res.json(product))
-    }catch(err){
-     res.status(400).json("Error: " + err)
-    }
-})
+router.get("/id",(req,res)=>{
+    res.json({Products:Products.id})
+    })
+
 
 //POST method - Adds item to DB
 router.post("/", async (req,res) =>{
@@ -68,3 +83,14 @@ router.delete("/:id",(req,res)=>{
 })
 
 module.exports = router
+
+
+//GET method - retrieves only one item
+// router.get("/i1",(req,res)=>{
+//     try{
+//         Product.findById(req.params.id)
+//     .then((product) => res.json(product))
+//     }catch(err){
+//      res.status(400).json("Error: " + err)
+//     }
+// })
