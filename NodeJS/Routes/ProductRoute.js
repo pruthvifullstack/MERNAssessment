@@ -35,12 +35,12 @@ router.get("/",(req,res)=>{
 router.get("/:id",(req,res)=>{
     const id = req.params.id
     for(let product of Products){
-        if(product.id === id){
+        if(product.id == id){
             res.json(product)
             return
         }
     }
-    res.status(404).send("Record not found")
+    res.send("Record not found")
     })
 
 
