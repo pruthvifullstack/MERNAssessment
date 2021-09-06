@@ -83,7 +83,7 @@ router.delete("/:id",(req,res)=>{
       }
       return false
   })
-  res.send("Movie Deleted")
+  res.send("Product Deleted")
 })
 
 module.exports = router
