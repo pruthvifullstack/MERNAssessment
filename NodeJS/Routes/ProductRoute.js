@@ -58,15 +58,25 @@ router.post("/",  (req,res) =>{
 //PUT Method - Update item
 router.put("/:id",(req,res)=>{
  const product = Products.find(c=>c.id === parseInt(req.params.id))
- console.log(product)
- product.id = req.body.id
- res.send(product)
+
+ if (product) {
+    const updateProduct = {
+        id: req.body.id,
+        title: req.body.title,
+        description: req.body.description,
+    };     
+    let target = Products.indexOf(product);
+    Products.splice(target, 1, updateProduct);
+    res.json("Product Updated Successfully!!");
+}
+else {
+    res.status(500).json('Data not found !!.');
+}
 })
 
 //DELETE method - delets itesm
 router.delete("/:id",(req,res)=>{
   const id = req.params.id
-
   Products = Products.filter(product =>{
       if(product.id !== id){
           return true
